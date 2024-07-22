@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <!-- Site-wide header content goes here -->
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Content unique to each page will be inserted here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Site-wide footer content goes here -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% comment %} {% extends "base.html" %} <!-- Inherit from the base template --> {% endcomment %}
+
+{% block title %}Appointment Form{% endblock %}  <!-- Set the title of the page -->
+
+{% block content %}
+<h2>Appointment Form</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Render the form as paragraphs -->
+    <button type="submit">Submit</button>
+    {% comment %} if successful, display bootstrap alert showing success {% endcomment %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            Appointment successfully created!
+        </div>
+    {% endif %}
+</form>
+{% endblock %}
