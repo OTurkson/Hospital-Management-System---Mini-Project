@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'patients',
     'staff',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,13 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'trxpkvng100@gmail.com'
 EMAIL_HOST_PASSWORD = 'hpgtrlkjpeovlakk'
+
+# rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ],
+}
