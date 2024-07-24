@@ -88,7 +88,8 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse("postgresql://turkson:crMYsuEEWAn3kEJr74Br2ucliLJcKE0n@dpg-cqg4ojl6l47c73bp3vt0-a.oregon-postgres.render.com/hms_v0ch")
+database_url = os.environ.get('DATABASE_URL')
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 
 # Password validation
