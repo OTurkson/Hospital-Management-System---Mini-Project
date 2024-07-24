@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import *
 from .models import Patient, Vitals, MedicalRecord, EmergencyContact, CheckIn, Appointment
 from django.http import Http404
-from .forms import EmergencyContactForm
+# from .forms import EmergencyContactForm
 from django.shortcuts import redirect,get_object_or_404
 from datetime import datetime
 from .emails import *
@@ -16,6 +16,7 @@ from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 class PatientList(APIView):
+    permission_classes = [IsAuthenticated]
     #list all patients
     def get(self, request):
         patients = Patient.objects.all()
@@ -40,6 +41,7 @@ class PatientList(APIView):
 
 
 class PatientDetail(APIView):
+    permission_classes = [IsAuthenticated]
     #find patient by id
     def get_object(self, patient_id):
         try:
@@ -77,6 +79,8 @@ class PatientDetail(APIView):
 
 
 class PatientVitals(APIView):
+    permission_classes = [IsAuthenticated]
+
     #find patient by id
     def get_object(self, patient_id):
         try:
@@ -135,6 +139,8 @@ class PatientVitals(APIView):
 
 
 class MedicalRecordList(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, patient_id):
         try:
             patient = Patient.objects.get(patient_id= patient_id)
@@ -180,6 +186,7 @@ class MedicalRecordList(APIView):
 
 
 class PatientMedicalRecord(APIView):
+    permission_classes = [IsAuthenticated]
     #find patient by id
     def get_object(self, patient_id, record_id):
         try:
@@ -218,6 +225,7 @@ class PatientMedicalRecord(APIView):
 
 
 class EmergencyContactDetail(APIView):
+    permission_classes = [IsAuthenticated]
     #find emergency contact by patient id
     def get_object(self, patient_id):
         try:
@@ -287,6 +295,7 @@ class EmergencyContactDetail(APIView):
 # from .forms import CheckInForm, AppointmentForm
 
 class CheckInList(APIView):
+    permission_classes = [IsAuthenticated]
     #list all checkins
     def get(self, request):
         checkins = CheckIn.objects.all()
@@ -347,6 +356,8 @@ class CheckInList(APIView):
 
 
 class CheckInDetail(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, checkin_id):
         try:
             return CheckIn.objects.get(checkin_id= checkin_id)
@@ -378,6 +389,8 @@ class CheckInDetail(APIView):
     
 
 class AppointmentList(APIView):
+    permission_classes = [IsAuthenticated]
+
     #list all appointments
     def get(self, request):
         appointments = Appointment.objects.all()
@@ -427,6 +440,8 @@ class AppointmentList(APIView):
     
 
 class AppointmentDetail(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, appointment_id):
         try:
             return Appointment.objects.get(appointment_id= appointment_id)

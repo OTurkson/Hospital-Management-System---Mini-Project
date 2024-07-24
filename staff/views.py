@@ -11,6 +11,7 @@ from patients.models import MedicalRecord
 
 # Create your views here.
 class DoctorList(APIView):
+    permission_classes = [IsAuthenticated]
     #retrieve all doctors
     def get(self, request):
         doctors = Doctor.objects.all()
@@ -35,6 +36,7 @@ class DoctorList(APIView):
     
 
 class DoctorDetail(APIView):
+    permission_classes = [IsAuthenticated]
     def get_object(self, doctor_id):
         try:
             return Doctor.objects.get(doctor_id= doctor_id)

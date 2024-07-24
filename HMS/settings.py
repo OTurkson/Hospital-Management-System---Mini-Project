@@ -138,8 +138,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'trxpkvng100@gmail.com'
-EMAIL_HOST_PASSWORD = 'hpgtrlkjpeovlakk'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+# Default from email address with a moniker name
+DEFAULT_FROM_EMAIL = 'Hospital Management System <trxpkvng100@gmail.com>'
 
 #simple jwt settings
 SIMPLE_JWT = {
