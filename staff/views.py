@@ -23,16 +23,16 @@ class DoctorList(APIView):
         return Response(response_data, status=status.HTTP_200_OK)
         
     #add a new doctor
-    def post(self, request):
-        serializer = DoctorSerializer(data=request.data)
-        #check if doctor exists with same email address
-        if Doctor.objects.filter(email=request.data['email']).exists():
-            return Response({"message":"Doctor with this email already exists"}, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request):
+    #     serializer = DoctorSerializer(data=request.data)
+    #     #check if doctor exists with same email address
+    #     if Doctor.objects.filter(email=request.data['email']).exists():
+    #         return Response({"message":"Doctor with this email already exists"}, status=status.HTTP_400_BAD_REQUEST)
         
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 class DoctorDetail(APIView):

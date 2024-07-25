@@ -5,25 +5,25 @@ from .models import *
 from staff.models import Doctor
 
 #send registration email for new patients
-def send_registration_email(email):
-    if email:
-        try:
-            patient = Patient.objects.get(email=email)
-        except Patient.DoesNotExist:
-            return
-        else:
-            subject = 'Registration Confirmation'
-            message = f'''Dear {patient.first_name},\n
-            Welcome to the Hospital Management System. Kindly find your details below: \n
-            Name: {patient.first_name} {patient.last_name}\n
-            Email: {patient.email}\n
-            Phone Number: {patient.phone_number}\n
-            Address: {patient.address}\n
-            Date of Birth: {patient.date_of_birth}\n
-            Occupation: {patient.occupation}\n\n
-            Thank you for registering with us.\n      
-    '''
-        send_mail(subject, message, settings.EMAIL_HOST_USER, [email], fail_silently=False)
+# def send_registration_email(email):
+#     if email:
+#         try:
+#             patient = Patient.objects.get(email=email)
+#         except Patient.DoesNotExist:
+#             return
+#         else:
+#             subject = 'Registration Confirmation'
+#             message = f'''Dear {patient.first_name},\n
+#             Welcome to the Hospital Management System. Kindly find your details below: \n
+#             Name: {patient.first_name} {patient.last_name}\n
+#             Email: {patient.email}\n
+#             Phone Number: {patient.phone_number}\n
+#             Address: {patient.address}\n
+#             Date of Birth: {patient.date_of_birth}\n
+#             Occupation: {patient.occupation}\n\n
+#             Thank you for registering with us.\n      
+#     '''
+#         send_mail(subject, message, settings.EMAIL_HOST_USER, [email], fail_silently=False)
 
 #send appointment email to patients and doctor
 def send_appointment_email(email, doctor_email, date, time):
