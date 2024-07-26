@@ -34,8 +34,8 @@ def send_appointment_email(email, doctor_email, date, time):
     patient = Patient.objects.get(email=email)
     
     html_message = render_to_string('appointment_email.html', {
-        'patient': patient.first_name + ' ' + patient.last_name,
-        'doctor': doctor,
+        'patient': patient.first_name,
+        'doctor': doctor.first_name + ' ' + doctor.last_name,
         'date': date,
         'time': time
     })
