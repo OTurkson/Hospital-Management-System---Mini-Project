@@ -1,7 +1,10 @@
 #send_registration emails to patients, doctors and admins when they are added to the system
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.conf import settings
 from .models import *
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 
 def send_registration_email(email):
     if email:
@@ -11,11 +14,13 @@ def send_registration_email(email):
             return
         else:
             subject = 'Registration Confirmation'
-            message = f'''Dear {user.username},\n
-            Welcome to the Hospital Management System. Kindly find your details below: \n
-            Name: {user.username}\n
-            Email: {user.email}\n
-            Role: {user.role}\n\n
-            Thank you for registering with us.\n      
-    '''
-        send_mail(subject, message, settings.EMAIL_HOST_USER, [email], fail_silently=False)
+            
+            html_message = render_to_string('registration_email.html', {
+                'user': user,
+            })
+            plain_message = strip_tags(html_message)
+        
+            message = EmailMultiAlternatives(subject=subject, body=plain_message, from_email=settings.EMAIL_HOST_USER, to=[user.email])
+
+            message.attach_alternative(html_message, "text/html")
+            message.send()

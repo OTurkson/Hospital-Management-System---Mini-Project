@@ -142,7 +142,7 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # Default from email address with a moniker name
-DEFAULT_FROM_EMAIL = 'Hospital Management System <trxpkvng100@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Hospital Management System'
 
 #simple jwt settings
 SIMPLE_JWT = {
