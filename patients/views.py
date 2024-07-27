@@ -403,6 +403,11 @@ class AppointmentList(APIView):
         
     #add a new appointment
     def post(self, request):
+        try:
+            patient = Patient.objects.get(patient_id=request.data["patient"])
+        except Patient.DoesNotExist:
+            raise Http404("Patient does not exist. Please add patient first")
+        
         serializer = AppointmentSerializer(data=request.data)
         
         if serializer.is_valid():
