@@ -60,6 +60,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
+
+
 ROOT_URLCONF = 'HMS.urls'
 
 TEMPLATES = [
