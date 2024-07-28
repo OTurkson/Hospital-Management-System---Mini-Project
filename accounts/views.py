@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 
 class AddUserView(APIView):
-	permission_classes = [IsAuthenticated]
 
 	def post(self, request):
 		form = CustomUserCreationForm(request.data)
