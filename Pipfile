@@ -12,6 +12,7 @@ psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
 bleach = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
