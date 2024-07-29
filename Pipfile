@@ -13,6 +13,7 @@ gunicorn = "*"
 whitenoise = "*"
 bleach = "*"
 django-cors-headers = "*"
+drf-yasg = "*"
 
 [dev-packages]
 
